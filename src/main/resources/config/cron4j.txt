@@ -1,0 +1,6 @@
+cron4j=CrmBaseDataCron
+
+CrmBaseDataCron.cron=*/2 * * * *
+CrmBaseDataCron.class=com.kakarote.crm9.erp.crm.cron.CrmBaseDataCron
+CrmBaseDataCron.daemon=true
+CrmBaseDataCron.enable=true
