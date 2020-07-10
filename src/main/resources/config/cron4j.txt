@@ -1,6 +1,6 @@
-cron4j=CrmBaseDataCron
+cron4j=MyCron
 
-CrmBaseDataCron.cron=*/2 * * * *
-CrmBaseDataCron.class=com.kakarote.crm9.erp.crm.cron.CrmBaseDataCron
-CrmBaseDataCron.daemon=true
-CrmBaseDataCron.enable=true
+MyCron.cron=*/2 * * * *
+MyCron.class=com.jfinal.cron.TestCron
+MyCron.daemon=true
+MyCron.enable=true

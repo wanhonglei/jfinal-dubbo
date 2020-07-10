@@ -1,8 +1,8 @@
 package com.jfinal.plugin.app.config;
 
 import cn.hutool.core.util.StrUtil;
+import com.JfinalProps;
 import com.jfinal.kit.Prop;
-import com.kakarote.crm9.utils.CrmProps;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Method;
@@ -31,7 +31,7 @@ public class ConfigManager {
 	 */
 	private Properties mainProperties;
 
-	public static final CrmProps CRM_PROP = CrmProps.getInstance();
+	public static final JfinalProps JFINAL_PROPS = JfinalProps.getInstance();
 
 	/**
 	 * 保证单列
@@ -52,7 +52,7 @@ public class ConfigManager {
 
 	private void init() {
 
-		mainProperties =  CrmProps.getInstance().getProperties();
+		mainProperties =  JFINAL_PROPS.getProperties();
 
 		//预留属性，区分环境标
 		String mode = getConfigValue("jfinal.app.mode");
@@ -147,7 +147,7 @@ public class ConfigManager {
 		if (devMode == null) {
 			synchronized (this) {
 				if (devMode == null) {
-					devMode = CRM_PROP.getBoolean("jfinal.devMode", Boolean.TRUE);
+					devMode = JFINAL_PROPS.getBoolean("jfinal.devMode", Boolean.TRUE);
 				}
 			}
 		}

@@ -1,31 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.kakarote</groupId>
-    <artifactId>crm9</artifactId>
+    <groupId>com.honglei.wan</groupId>
+    <artifactId>jfinal-dubbo</artifactId>
     <packaging>jar</packaging>
-    <version>20200709-08</version>
-    <name>crm9-master</name>
+    <version>0.0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <spring.version>4.3.5.RELEASE</spring.version>
         <io.netty.version>4.1.9.Final</io.netty.version>
         <dubbo.version>2.7.7</dubbo.version>
         <org.jboss.resteasy.version>3.9.0.Final</org.jboss.resteasy.version>
-
-        <!-- 创建release分支可能需要的修改二方包的版本  -->
-        <merak_billing_api_version>1.0.6</merak_billing_api_version>
-        <venus_biz_api_version>1.0.7</venus_biz_api_version>
-        <merak_payment_api_version>1.0.22</merak_payment_api_version>
-
-        <sonar.inclusions>
-            src/main/java/com/kakarote/crm9/**/service/*,
-            src/main/java/com/kakarote/crm9/**/service/**/*,
-            src/main/java/com/kakarote/crm9/**/listener/*,
-            src/main/java/com/kakarote/crm9/**/mq/*,
-        </sonar.inclusions>
     </properties>
 
     <!-- 使用阿里 maven 库 -->
@@ -35,45 +21,6 @@
             <url>http://maven.aliyun.com/nexus/content/groups/public</url>
             <releases>
                 <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>qx-maven</id>
-            <url>http://maven.wz-inc.com/content/repositories/releases/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>qx-maven-central</id>
-            <url>http://maven.wz-inc.com/content/repositories/central/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>qx-maven-snapshots</id>
-            <url>
-                http://maven.wz-inc.com/content/repositories/snapshots/
-            </url>
-            <releases>
-                <enabled>false</enabled>
             </releases>
             <snapshots>
                 <enabled>true</enabled>
@@ -178,105 +125,11 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.qxwz.lyra.shared</groupId>
-            <artifactId>lyra-mq-consumer-bo</artifactId>
-            <version>1.2.7</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.qxwz.columbus</groupId>
-            <artifactId>columbus-client</artifactId>
-            <version>0.0.14</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.qxwz.buc</groupId>
-            <artifactId>buc-sso-client</artifactId>
-            <version>0.0.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.qxwz.midway</groupId>
-            <artifactId>midway-client</artifactId>
-            <version>0.1.5</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>com.qxwz.lyra.shared</groupId>
-            <artifactId>lyra-oss-dal</artifactId>
-            <version>1.2.7</version>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.4.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.qxwz.venus</groupId>
-            <artifactId>venus-common</artifactId>
-            <version>2.2.6</version>
         </dependency>
 
         <dependency>
@@ -298,22 +151,6 @@
             </exclusions>
         </dependency>
         <!-- application end -->
-
-        <dependency>
-            <groupId>com.qxwz.venus.shared</groupId>
-            <artifactId>venus-api</artifactId>
-            <version>2.6.0</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>iov.common</artifactId>
-                    <groupId>com.wz.iov.shared</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.velocity</groupId>
@@ -404,32 +241,13 @@
             <type>pom</type>
         </dependency>
 
-        <dependency>
-            <groupId>com.qxwz.merak.shared</groupId>
-            <artifactId>merak-payment-api</artifactId>
-            <version>${merak_payment_api_version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.qxwz.merak.shared</groupId>
-            <artifactId>merak-billing-api</artifactId>
-            <version>${merak_billing_api_version}</version>
-        </dependency>
-
+        <!-- 调用dubbo服务测试包 -->
         <dependency>
             <groupId>com.qxwz.venus.shared</groupId>
             <artifactId>venus-biz-api</artifactId>
-            <version>${venus_biz_api_version}</version>
+            <version>1.0.7</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.qxwz.lyra.shared</groupId>
-            <artifactId>lyra-mq-producer-bo</artifactId>
-            <version>1.4.0</version>
-            <scope>test</scope>
-            <!-- 目前只在Test的时候使用 -->
-        </dependency>
     </dependencies>
 
     <build>

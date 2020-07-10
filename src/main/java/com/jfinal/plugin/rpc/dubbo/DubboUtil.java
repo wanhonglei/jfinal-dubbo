@@ -5,7 +5,6 @@ import com.jfinal.plugin.app.config.ConfigManager;
 import com.jfinal.plugin.rpc.RpcUtil;
 import com.jfinal.plugin.rpc.config.RpcReferenceConfig;
 import com.jfinal.plugin.rpc.config.RpcServiceConfig;
-import com.kakarote.crm9.erp.crm.constant.CrmConstant;
 import org.apache.dubbo.config.AbstractConfig;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ArgumentConfig;
@@ -68,7 +67,8 @@ public class DubboUtil {
 		//application 配置
 		ApplicationConfig applicationConfig = config(ApplicationConfig.class, "rpc.dubbo.application");
 		if (StrUtil.isBlank(applicationConfig.getName())) {
-			applicationConfig.setName(CrmConstant.CRM_SR_CODE);
+			//TODO 改成你系统的名称
+			applicationConfig.setName("DUBBO");
 		}
 		//默认关闭 qos
 		if (applicationConfig.getQosEnable() == null) {

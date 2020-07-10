@@ -3,7 +3,6 @@ package com.jfinal.plugin.rpc;
 import com.jfinal.plugin.app.config.ConfigManager;
 import com.jfinal.plugin.rpc.config.RpcConfig;
 import com.jfinal.plugin.rpc.config.RpcReferenceConfig;
-import com.qxwz.columbus.client.util.ConfigUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
@@ -37,7 +36,8 @@ public abstract class BaseRpc implements Irpc{
 		 * 没有指定group，默认取当前环境的环境标
 		 */
 		if (StringUtils.isBlank(config.getGroup())){
-			config.setGroup(ConfigUtil.getDefaultColumbusEnv());
+			//TODO 改成系统的环境表配置
+			config.setGroup("DEFAULT");
 		}
 
 		/*
