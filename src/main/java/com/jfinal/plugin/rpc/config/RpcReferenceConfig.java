@@ -15,6 +15,7 @@
  */
 package com.jfinal.plugin.rpc.config;
 
+import com.jfinal.plugin.app.config.ConfigManager;
 import com.jfinal.plugin.rpc.RpcUtil;
 import com.jfinal.plugin.rpc.annotation.RPCInject;
 import lombok.Data;
@@ -36,8 +37,9 @@ public class RpcReferenceConfig implements Serializable {
 
     /**
      * Service group, default value is empty string
+     * 默认的dubbo group
      */
-    private String group;
+    private String group = "default";
 
     /**
      * Service target URL for direct invocation, if this is specified, then registry center takes no effect.
@@ -54,7 +56,7 @@ public class RpcReferenceConfig implements Serializable {
     /**
      * Check if service provider is available during boot up, default value is true
      */
-    private Boolean check;
+    private Boolean check = Boolean.valueOf(ConfigManager.me().getConfigValue("rpc.dubbo.reference.check"));
 
 
     /**

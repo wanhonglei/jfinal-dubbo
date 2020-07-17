@@ -71,17 +71,8 @@ public class MyAopFactory extends AopFactory {
 	 * @param rpcInject
 	 */
 	private void doInjectRpc(Object targetObject, Field field, RPCInject rpcInject) {
-
 		try {
-			RpcReferenceConfig serviceConfig = new RpcReferenceConfig(rpcInject);
-			Class<?> fieldInjectedClass = field.getType();
-
-			Irpc rpc = RpcManager.me().getRpc();
-
-			Object fieldInjectedObject = rpc.serviceObtain(fieldInjectedClass, serviceConfig);
-
-			setFieldValue(field, targetObject, fieldInjectedObject);
-
+			setFieldValue(field, targetObject, RpcManager.me().getRpc().serviceObtain(field.getType(), new RpcReferenceConfig(rpcInject)));
 		} catch (Exception ex) {
 			logger.error("can not inject rpc service in " + targetObject.getClass() + " by config " + rpcInject, ex);
 		}
