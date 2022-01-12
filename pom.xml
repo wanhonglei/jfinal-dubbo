@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <io.netty.version>4.1.9.Final</io.netty.version>
-        <dubbo.version>2.7.7</dubbo.version>
+        <dubbo.version>2.7.15</dubbo.version>
         <org.jboss.resteasy.version>3.9.0.Final</org.jboss.resteasy.version>
     </properties>
 
